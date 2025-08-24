@@ -2,17 +2,20 @@
 function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const error = document.getElementById('error');
+    const errorMsg = document.getElementById('error-message');
 
     if (username === 'admin' && password === '1234') {
-        document.getElementById('loginPage').style.display = 'none';
-        document.getElementById('mainPage').style.display = 'block';
+        document.getElementById('login-page').style.display = 'none';
+        document.getElementById('main-page').classList.remove('hidden');
     } else {
-        error.textContent = 'Sai mật khẩu';
+        errorMsg.textContent = 'Sai mật khẩu';
     }
 }
 
-function toggleMenu() {
-    const menu = document.getElementById('sideMenu');
-    menu.classList.toggle('open');
+function openMenu() {
+    document.getElementById('sidebar').classList.add('active');
+}
+
+function closeMenu() {
+    document.getElementById('sidebar').classList.remove('active');
 }

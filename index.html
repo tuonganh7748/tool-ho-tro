@@ -2,60 +2,74 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOOL HỖ TRỢ BÁN HÀNG</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="login-container" id="loginPage">
-        <h2>Đăng Nhập</h2>
-        <input type="text" id="username" placeholder="Tên đăng nhập">
-        <input type="password" id="password" placeholder="Mật khẩu">
-        <button onclick="login()">Đăng nhập</button>
-        <p id="error" class="error"></p>
-    </div>
 
-    <div class="main-container" id="mainPage" style="display:none;">
-        <header>
-            <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
-            <h1>TOOL HỖ TRỢ BÁN HÀNG</h1>
-            <div class="user-info"><i class="fas fa-user"></i> Xin chào admin</div>
-        </header>
+<!-- Form đăng nhập -->
+<div id="login-page" class="login-container">
+    <h2>Đăng Nhập</h2>
+    <input type="text" id="username" placeholder="Tên đăng nhập">
+    <input type="password" id="password" placeholder="Mật khẩu">
+    <button onclick="login()">Đăng nhập</button>
+    <p id="error-message" class="error"></p>
+</div>
 
-        <nav id="sideMenu" class="side-menu">
-            <div class="close-btn" onclick="toggleMenu()">×</div>
-            <ul>
-                <li><i class="fas fa-home"></i> Trang Chủ</li>
-                <li><i class="fas fa-car"></i> Cavet Xe
-                    <ul class="submenu">
-                        <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUOUNQOTdCN01PTlJWVEYxU0U4MFJIUEI1SS4u&route=shorturl" target="_blank">Upload Cavet Xe</a></li>
-                        <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUQTI0WkpKMjNQRUZUOFVLR1lKMVI5VTNEQy4u&route=shorturl" target="_blank">Yêu Cầu Cavet Gốc</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUMFFEUEZXN1QxNkM5V1lHMDFLWElRUTk2Ni4u&route=shorturl" target="_blank"><i class="fas fa-upload"></i> Upload Thư Xác Nhận</a></li>
-                <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUOU1PRlBCREk2Q1VXMjFRVzRCSU4wRUM5VC4u" target="_blank"><i class="fas fa-headset"></i> BO - Hỗ Trợ</a></li>
-                <li><a href="https://www.hdsaison.com.vn/vn/khach-hang/tra-cuu-khoan-vay.html" target="_blank"><i class="fas fa-search-dollar"></i> Tra Cứu Đóng Tiền</a></li>
-                <li><a href="https://hportal.hdsaison.com.vn/AddSolution.do?solID=3" target="_blank"><i class="fas fa-tools"></i> IT Helpdesk</a></li>
-                <li><a href="https://mail.hdsaison.com.vn/owa/auth/logon.aspx?url=https%3a%2f%2fmail.hdsaison.com.vn%2fowa%2f&reason=0#path=/mail" target="_blank"><i class="fas fa-envelope"></i> Mail</a></li>
-                <li><a href="https://passwordreset.microsoftonline.com/Default.aspx" target="_blank"><i class="fas fa-key"></i> Đặt Lại Mật Khẩu</a></li>
-            </ul>
-        </nav>
+<!-- Trang chính -->
+<div id="main-page" class="hidden">
+    <!-- Header -->
+    <header class="header">
+        <div class="menu-icon" onclick="openMenu()"><i class="fas fa-bars"></i></div>
+        <h1>TOOL HỖ TRỢ BÁN HÀNG</h1>
+        <div class="user-info"><i class="fas fa-user"></i> Xin chào admin</div>
+    </header>
 
-        <main>
-            <button onclick="window.open('https://hpo.hdsaison.com.vn/login','_blank')">LOGIN HPO</button>
-            <button onclick="window.open('http://icard.hdsaison.com.vn/dangky/kichhoat','_blank')">Thẻ Tín Dụng - Kích Hoạt</button>
-            <button onclick="window.open('https://icard.hdsaison.com.vn/login','_blank')">Thẻ Tín Dụng - Đăng Nhập</button>
-            <button onclick="window.open('https://baohiemxahoi.gov.vn/tracuu/Pages/tra-cuu-thoi-han-su-dung-the-bhyt.aspx','_blank')">Tra Cứu BHYT</button>
-            <button onclick="window.open('https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b8AAWMp0y69JimmTZeaMwMpUQzlTUElQTjYzNFdBRFZNQ09aRDFZVTg1Qi4u','_blank')">Điều Chỉnh Thanh Toán</button>
-            <button onclick="window.open('https://hdbank.diadiembank.com/','_blank')">Địa Chỉ GD HD Bank</button>
-            <button onclick="window.open('https://vikkibank.vn/mang-luoi-hoat-dong-ngan-hang-so-vikki-digital-bank/','_blank')">Địa Chỉ GD Vikki Bank</button>
-            <button onclick="window.open('https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b8AAWMp0y69JimmTZeaMwMpUOUc5MUxIREowNDBCRjM1QTRFSUk1OVlUMy4u','_blank')">Khai Báo KH Qua Đời</button>
-        </main>
-        <footer>By Tuong Anh</footer>
-    </div>
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="closeMenu()"><i class="fas fa-times"></i></div>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Trang Chủ</a></li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-car"></i> Cavet Xe <i class="fas fa-chevron-down"></i></a>
+                <ul class="submenu">
+                    <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUOUNQOTdCN01PTlJWVEYxU0U4MFJIUEI1SS4u&route=shorturl" target="_blank">Upload Cavet Xe</a></li>
+                    <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUQTI0WkpKMjNQRUZUOFVLR1lKMVI5VTNEQy4u&route=shorturl" target="_blank">Yêu Cầu Cavet Gốc</a></li>
+                </ul>
+            </li>
+            <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUMFFEUEZXN1QxNkM5V1lHMDFLWElRUTk2Ni4u&route=shorturl" target="_blank"><i class="fas fa-file-upload"></i> Upload Thư Xác Nhận</a></li>
+            <li><a href="https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b2zwrFemGJ1HtKwpV4rW0tVUOU1PRlBCREk2Q1VXMjFRVzRCSU4wRUM5VC4u" target="_blank"><i class="fas fa-headset"></i> BO - Hỗ Trợ</a></li>
+            <li><a href="https://www.hdsaison.com.vn/vn/khach-hang/tra-cuu-khoan-vay.html" target="_blank"><i class="fas fa-search"></i> Tra Cứu Đóng Tiền</a></li>
+            <li><a href="https://hportal.hdsaison.com.vn/AddSolution.do?solID=3" target="_blank"><i class="fas fa-laptop-code"></i> IT Helpdesk</a></li>
+            <li><a href="https://mail.hdsaison.com.vn/owa/auth/logon.aspx" target="_blank"><i class="fas fa-envelope"></i> Mail</a></li>
+            <li><a href="https://passwordreset.microsoftonline.com/Default.aspx" target="_blank"><i class="fas fa-key"></i> Đặt Lại Mật Khẩu</a></li>
+        </ul>
+    </nav>
 
-    <script src="script.js"></script>
+    <!-- Nội dung chính -->
+    <main class="content">
+        <button class="main-btn" onclick="window.open('https://hpo.hdsaison.com.vn/login','_blank')">LOGIN HPO</button>
+        <div class="dropdown-buttons">
+            <div class="dropdown-btn">
+                <button class="main-btn">Thẻ Tín Dụng</button>
+                <div class="dropdown-content">
+                    <a href="http://icard.hdsaison.com.vn/dangky/kichhoat" target="_blank">Kích Hoạt</a>
+                    <a href="https://icard.hdsaison.com.vn/login" target="_blank">Đăng Nhập</a>
+                </div>
+            </div>
+        </div>
+        <button class="main-btn" onclick="window.open('https://baohiemxahoi.gov.vn/tracuu/Pages/tra-cuu-thoi-han-su-dung-the-bhyt.aspx','_blank')">Tra Cứu BHYT</button>
+        <button class="main-btn" onclick="window.open('https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b8AAWMp0y69JimmTZeaMwMpUQzlTUElQTjYzNFdBRFZNQ09aRDFZVTg1Qi4u','_blank')">Điều Chỉnh Thanh Toán</button>
+        <button class="main-btn" onclick="window.open('https://hdbank.diadiembank.com/','_blank')">Địa Chỉ GD HD Bank</button>
+        <button class="main-btn" onclick="window.open('https://vikkibank.vn/mang-luoi-hoat-dong-ngan-hang-so-vikki-digital-bank/','_blank')">Địa Chỉ GD Vikki Bank</button>
+        <button class="main-btn" onclick="window.open('https://forms.office.com/pages/responsepage.aspx?id=v-ZoGBHKMUC4C0evO-91b8AAWMp0y69JimmTZeaMwMpUOUc5MUxIREowNDBCRjM1QTRFSUk1OVlUMy4u','_blank')">Khai Báo KH Qua Đời</button>
+        <p class="footer">By Tuong Anh</p>
+    </main>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

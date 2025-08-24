@@ -2,73 +2,178 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background: #f5f5f5;
 }
+
+.hidden {
+    display: none;
+}
+
 .login-container {
-    width: 300px;
-    margin: 100px auto;
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-input {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 8px;
-}
-button {
-    padding: 10px;
-    margin-top: 10px;
     width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
     background: red;
     color: #fff;
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
-.error { color: red; }
-header {
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+/* Header */
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background: #f4f4f4;
+    background: #fff;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
+
+.header h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
 }
-.side-menu {
+
+.user-info {
+    font-size: 14px;
+}
+
+/* Sidebar */
+.sidebar {
     position: fixed;
     top: 0;
     left: -250px;
     width: 250px;
     height: 100%;
     background: red;
-    color: #fff;
+    padding: 20px;
     transition: 0.3s;
-    padding: 20px;
+    z-index: 2000;
 }
-.side-menu.open { left: 0; }
-.side-menu ul { list-style: none; padding: 0; }
-.side-menu li { margin: 10px 0; }
-.side-menu a { color: #fff; text-decoration: none; }
-.close-btn {
-    font-size: 24px;
-    cursor: pointer;
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar .close-btn {
     text-align: right;
+    margin-bottom: 20px;
 }
-main {
-    text-align: center;
-    padding: 20px;
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
 }
-main button {
-    margin: 10px;
-    padding: 15px;
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
     font-size: 16px;
 }
-footer {
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* Nội dung chính */
+.content {
+    margin-top: 70px;
+    padding: 20px;
     text-align: center;
+}
+
+.main-btn {
+    display: block;
+    width: 90%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 15px;
+    background: red;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.main-btn:hover {
+    background: darkred;
+}
+
+.footer {
     margin-top: 20px;
     font-size: 14px;
+    color: #555;
+}
+
+.dropdown-content {
+    display: none;
+    background: #fff;
+    position: absolute;
+    width: 200px;
+    border: 1px solid #ccc;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.dropdown-btn:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background: #f1f1f1;
 }
