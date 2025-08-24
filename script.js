@@ -1,21 +1,40 @@
+// Xử lý login
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "admin" && pass === "1234") {
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("error").textContent = "Sai mật khẩu";
+      }
+    });
+  }
 
-function login() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const errorMsg = document.getElementById('error-message');
+  // Sidebar toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  const closeBtn = document.getElementById("closeBtn");
 
-    if (username === 'admin' && password === '1234') {
-        document.getElementById('login-page').style.display = 'none';
-        document.getElementById('main-page').classList.remove('hidden');
-    } else {
-        errorMsg.textContent = 'Sai mật khẩu';
-    }
-}
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      sidebar.style.left = "0";
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      sidebar.style.left = "-250px";
+    });
+  }
 
-function openMenu() {
-    document.getElementById('sidebar').classList.add('active');
-}
-
-function closeMenu() {
-    document.getElementById('sidebar').classList.remove('active');
-}
+  // Submenu toggle
+  document.querySelectorAll(".has-sub > a").forEach(item => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      item.parentElement.classList.toggle("active");
+    });
+  });
+});
