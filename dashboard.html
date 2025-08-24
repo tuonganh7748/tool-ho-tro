@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HD Saison - Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tool Hỗ Trợ</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="#">Trang Chủ</a></li>
-            <li><a href="#">Cavet Xe</a></li>
-            <li><a href="#">Upload Thư Xác Nhận</a></li>
-        </ul>
+  <!-- Menu bên trái -->
+  <div id="sidebar" class="sidebar">
+    <a href="#">Trang Chủ</a>
+    <div class="dropdown">
+      <button class="dropdown-btn">Cavet Xe</button>
+      <div class="dropdown-container">
+        <a href="#">Upload Cavet</a>
+        <a href="#">Yêu Cầu Cavet</a>
+      </div>
     </div>
-    <div class="content">
-        <header>
-            <h1>TOOL HỖ TRỢ BÁN HÀNG</h1>
-            <div class="user-info">Xin chào admin</div>
-        </header>
-        <main>
-            <button onclick="window.location.href='https://hpo.hdsaison.com.vn/login'">LOGIN HPO</button>
-        </main>
+    <a href="#">Thư Xác Nhận</a>
+    <a href="#">BO - Hỗ Trợ</a>
+    <a href="#">Tra Cứu Đóng Tiền</a>
+    <a href="#">IT Helpdesk</a>
+    <a href="#">Đặt Lại Mật Khẩu</a>
+    <a href="#">MAIL</a>
+    <div class="sidebar-footer">By Tuong Anh</div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
+    <h1>TOOL HỖ TRỢ</h1>
+    <div class="user-icon">👤 adminAnh</div>
+  </div>
+
+  <!-- Nội dung chính -->
+  <div class="main-content">
+    <div class="button-grid">
+      <a href="#" class="btn">LOGIN HPO</a>
+
+      <div class="dropdown-center">
+        <button class="btn dropdown-toggle">Thẻ Tín Dụng ▼</button>
+        <div class="dropdown-center-menu">
+          <a href="http://icard.hdsaison.com.vn/dangky/kichhoat" target="_blank">Kích hoạt thẻ</a>
+          <a href="https://icard.hdsaison.com.vn/login" target="_blank">Đăng nhập</a>
+        </div>
+      </div>
+
+      <a href="#" class="btn">Tra Cứu BHYT</a>
+      <a href="#" class="btn">Điều Chỉnh Thanh Toán</a>
+      <a href="#" class="btn">Địa Chỉ GD HD Bank</a>
+      <a href="#" class="btn">Địa Chỉ GD Vikki Bank</a>
+      <a href="#" class="btn">Khai Báo KH Qua Đời</a>
     </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
