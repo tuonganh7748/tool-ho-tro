@@ -5,108 +5,142 @@
   <title>Tool Hỗ Trợ</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
-    /* Sidebar */
-    .sidebar {
-      width: 220px;
-      background-color: #2c3e50;
-      color: white;
-      height: 100vh;
-      transition: transform 0.3s ease;
-      position: fixed;
-      top: 0;
-      left: 0;
-      padding-top: 60px; /* chừa khoảng cho header */
-    }
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #2c3e50;
+  color: white;
+  height: 100vh;
+  transition: transform 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 60px;
+}
 
-    .sidebar.hidden {
-      transform: translateX(-220px);
-    }
+.sidebar.hidden {
+  transform: translateX(-220px);
+}
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    .sidebar ul li a {
-      display: block;
-      padding: 15px;
-      color: white;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+.sidebar ul li a {
+  display: block;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 14px;
+}
 
-    .sidebar ul li a:hover {
-      background-color: #34495e;
-    }
+.sidebar ul li a:hover {
+  background-color: #34495e;
+}
 
-    /* Main content */
-    .main-content {
-      margin-left: 220px;
-      transition: margin-left 0.3s ease;
-      padding: 20px;
-    }
+/* Main content */
+.main-content {
+  margin-left: 220px;
+  transition: margin-left 0.3s ease;
+  padding: 15px;
+}
 
-    .main-content.full {
-      margin-left: 0;
-    }
+.main-content.full {
+  margin-left: 0;
+}
 
-    /* Header */
-    .header {
-      background-color: #3498db;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      z-index: 1000;
-    }
+/* Header */
+.header {
+  background-color: #3498db;
+  color: white;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  z-index: 1000;
+}
 
-    .header h2 {
-      margin: 0;
-      font-size: 20px;
-      flex: 1;
-      text-align: center;
-    }
+.header h2 {
+  margin: 0;
+  font-size: 18px;
+  flex: 1;
+  text-align: center;
+}
 
-    .menu-toggle {
-      font-size: 22px;
-      cursor: pointer;
-    }
+.menu-toggle {
+  font-size: 20px;
+  cursor: pointer;
+}
 
-    .user-info {
-      font-size: 14px;
-    }
+.user-info {
+  font-size: 12px;
+}
 
-    /* Nút chức năng */
-    .buttons {
-      margin-top: 80px; /* tránh đè header */
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+/* Nút chức năng */
+.buttons {
+  margin-top: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-    .buttons a button {
-      padding: 12px 18px;
-      background-color: #3498db;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
-    }
+.buttons a button {
+  padding: 8px 12px;
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
 
-    .buttons a button:hover {
-      background-color: #2980b9;
-    }
+.buttons a button:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 180px;
+    transform: translateX(-180px); /* ẩn mặc định trên mobile */
+  }
+  .sidebar.hidden {
+    transform: translateX(0);
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+  .header {
+    height: 45px;
+    padding: 5px 10px;
+  }
+  .header h2 {
+    font-size: 16px;
+  }
+  .buttons {
+    margin-top: 60px;
+    flex-direction: column;
+  }
+  .buttons a button {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
   </style>
 </head>
 <body>
