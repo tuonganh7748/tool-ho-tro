@@ -10,9 +10,6 @@
       font-family: Arial, sans-serif;
       background: #f4f6f9;
     }
-    html, body {
-      height: 100%;
-    }
 
     /* Sidebar */
     .sidebar {
@@ -106,6 +103,7 @@
       text-align: center;
       cursor: pointer;
       transition: transform 0.2s;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
     }
     .icon-btn i {
       font-size: 26px;
@@ -128,3 +126,53 @@
     .vikki { background: #f39c12; }
     .help { background: #d35400; }
     .reset { background: #c0392b; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .icon-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#"><i class="fa-solid fa-gear"></i> Cài đặt</a></li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">☰</span>
+    <h2>TOOL HỖ TRỢ</h2>
+    <div class="user-info">USER: adminAnh</div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <div class="icon-grid">
+      <div class="icon-btn login"><i class="fa-solid fa-right-to-bracket"></i>Đăng Nhập HPO</div>
+      <div class="icon-btn upload"><i class="fa-solid fa-upload"></i>Upload Cavet</div>
+      <div class="icon-btn request"><i class="fa-solid fa-file-circle-plus"></i>Yêu Cầu Cavet<br>Form Tổng Bo</div>
+      <div class="icon-btn mail"><i class="fa-solid fa-envelope"></i>Email</div>
+      <div class="icon-btn confirm"><i class="fa-solid fa-file-contract"></i>Thư Xác Nhận</div>
+      <div class="icon-btn credit"><i class="fa-solid fa-credit-card"></i>Thẻ Tín Dụng</div>
+      <div class="icon-btn payment"><i class="fa-solid fa-money-bill"></i>Tra Cứu Thanh Toán</div>
+      <div class="icon-btn bank"><i class="fa-solid fa-building-columns"></i>Địa Điểm GD HD Bank</div>
+      <div class="icon-btn vikki"><i class="fa-solid fa-location-dot"></i>Địa Điểm GD Vikki</div>
+      <div class="icon-btn help"><i class="fa-solid fa-headset"></i>IT Helpdesk</div>
+      <div class="icon-btn reset"><i class="fa-solid fa-key"></i>Đặt Lại Mật Khẩu</div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
