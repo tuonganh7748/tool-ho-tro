@@ -2,17 +2,28 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- quan trọng cho mobile -->
   <title>Tool Hỗ Trợ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: #f9f9f9;
     }
+
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
+    }
+
+    .main {
+      flex-grow: 1;
+      padding: 20px;
+      min-height: calc(100vh - 60px);
+      box-sizing: border-box;
     }
 
     /* Sidebar */
@@ -26,175 +37,164 @@
       top: 0;
       left: 0;
       padding-top: 60px;
+      z-index: 1000;
     }
 
     .sidebar.hidden {
       transform: translateX(-220px);
     }
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar ul li a {
+    .sidebar a {
       display: block;
-      padding: 12px;
       color: white;
+      padding: 12px;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      font-size: 14px;
     }
 
-    .sidebar ul li a:hover {
+    .sidebar a:hover {
       background-color: #34495e;
-    }
-
-    /* Main content */
-    .main-content {
-      margin-left: 220px;
-      transition: margin-left 0.3s ease;
-      padding: 15px;
-    }
-
-    .main-content.full {
-      margin-left: 0;
     }
 
     /* Header */
     .header {
+      height: 60px;
       background-color: #3498db;
       color: white;
-      padding: 8px 15px;
       display: flex;
       align-items: center;
-      position: fixed;
+      padding: 0 20px;
+      box-sizing: border-box;
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      height: 50px;
-      z-index: 1000;
+      z-index: 900;
     }
 
-    .header h2 {
-      margin: 0;
-      font-size: 18px;
-      flex: 1;
-      text-align: center;
-    }
-
-    .menu-toggle {
+    .menu-btn {
       font-size: 20px;
       cursor: pointer;
+      margin-right: 20px;
     }
 
-    .user-info {
-      font-size: 12px;
+    /* Nội dung chính */
+    .content {
+      margin-left: 220px;
+      transition: margin-left 0.3s ease;
+      padding: 20px;
     }
 
-    /* Nút chức năng */
+    .sidebar.hidden ~ .content {
+      margin-left: 0;
+    }
+
+    /* Các nút chính dạng icon (style giống app mobile) */
     .buttons {
-      margin-top: 70px;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 20px;
+    }
+
+    .icon-btn {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .buttons a {
-      flex: 1 1 calc(50% - 10px); /* mỗi nút chiếm nửa màn hình trên desktop */
-      text-align: center;
-    }
-
-    .buttons a button {
-      width: 100%;
-      padding: 15px;
-      font-size: 16px;
-      background-color: #3498db;
-      border: none;
-      border-radius: 6px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       color: white;
+      padding: 25px 10px;
+      border-radius: 24px; /* bo tròn nhiều hơn */
       cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+      height: 120px; /* cố định chiều cao để cân đối */
     }
 
-    .buttons a button:hover {
-      background-color: #2980b9;
+    .icon-btn i {
+      font-size: 32px;
+      margin-bottom: 10px;
     }
 
-    /* Responsive cho điện thoại */
+    .icon-btn span {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .icon-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-5px);
+    }
+
+    /* Màu riêng cho từng nút */
+    .credit { background: #27ae60; }        /* Xanh lá */
+    .bhyt { background: #e67e22; }          /* Cam */
+    .pay { background: #e74c3c; }           /* Đỏ */
+    .branch { background: #3498db; }        /* Xanh dương */
+    .dead { background: #9b59b6; }          /* Tím */
+
+    /* Responsive */
     @media (max-width: 768px) {
       .sidebar {
-        width: 180px;
-        transform: translateX(-180px); /* ẩn mặc định trên mobile */
+        transform: translateX(-220px);
       }
-      .sidebar.hidden {
+      .sidebar.show {
         transform: translateX(0);
       }
-      .main-content {
-        margin-left: 0 !important;  /* luôn full màn hình mobile */
-        padding: 10px;
-      }
-      .header {
-        height: 45px;
-        padding: 5px 10px;
-      }
-      .header h2 {
-        font-size: 16px;
-      }
-      .buttons {
-        margin-top: 60px;
-        flex-direction: column;
-      }
-      .buttons a {
-        flex: 1 1 100%;  /* mỗi nút chiếm full màn hình */
-      }
-      .buttons a button {
-        width: 100%;
-        font-size: 15px;
-        padding: 12px;
+      .content {
+        margin-left: 0;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
-    <ul>
-      <li><a href="#">Trang Chủ</a></li>
-      <li><a href="#">Cavet Xe</a></li>
-      <li><a href="#">Thư Xác Nhận</a></li>
-      <li><a href="#">BO - Hỗ Trợ</a></li>
-      <li><a href="#">Tra Cứu Đóng Tiền</a></li>
-      <li><a href="#">IT Helpdesk</a></li>
-      <li><a href="#">Đặt Lại Mật Khẩu</a></li>
-      <li><a href="#">MAIL</a></li>
-    </ul>
+    <a href="#">Trang Chủ</a>
+    <a href="#">Đăng Nhập</a>
+    <a href="#">Cài Đặt</a>
   </div>
 
-  <!-- Main content -->
-  <div class="main-content" id="main">
-    <div class="header">
-      <span class="menu-toggle" onclick="toggleSidebar()">☰</span>
-      <h2>TOOL HỖ TRỢ</h2>
-      <div class="user-info">👤 adminAnh</div>
-    </div>
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+    <h2>Tool Hỗ Trợ</h2>
+  </div>
 
+  <!-- Nội dung -->
+  <div class="content">
     <div class="buttons">
-      <a href="#"><button>Đăng Nhập HPO </button></a>
-      <a href="#"><button>Tra Cứu BHYT</button></a>
-      <a href="#"><button>Điều Chỉnh Thanh Toán</button></a>
-      <a href="#"><button>Địa Chỉ GD HD Bank</button></a>
-      <a href="#"><button>Khai Báo KH Qua Đời</button></a>
+      <a href="#" class="icon-btn credit">
+        <i class="fa-solid fa-credit-card"></i>
+        <span>Thẻ Tín Dụng</span>
+      </a>
+      <a href="#" class="icon-btn bhyt">
+        <i class="fa-solid fa-id-card"></i>
+        <span>Tra Cứu BHYT</span>
+      </a>
+      <a href="#" class="icon-btn pay">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        <span>Thanh Toán</span>
+      </a>
+      <a href="#" class="icon-btn branch">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>Địa Chỉ GD</span>
+      </a>
+      <a href="#" class="icon-btn dead">
+        <i class="fa-solid fa-user-slash"></i>
+        <span>KH Qua Đời</span>
+      </a>
     </div>
   </div>
 
   <script>
     function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("hidden");
-      document.getElementById("main").classList.toggle("full");
+      const sidebar = document.getElementById("sidebar");
+      if (window.innerWidth <= 768) {
+        sidebar.classList.toggle("show");
+      } else {
+        sidebar.classList.toggle("hidden");
+      }
     }
   </script>
-
 </body>
 </html>
