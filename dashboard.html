@@ -3,27 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Tool Hỗ Trợ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      background: #f4f6f9;
     }
-
     html, body {
       height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    .main {
-      flex-grow: 1;
-      padding: 20px;
-      min-height: calc(100vh - 60px);
-      box-sizing: border-box;
     }
 
     /* Sidebar */
@@ -32,66 +20,77 @@
       background-color: #2c3e50;
       color: white;
       height: 100vh;
-      transition: transform 0.3s ease;
       position: fixed;
       top: 0;
       left: 0;
+      transform: translateX(-220px);
+      transition: transform 0.3s ease;
       padding-top: 60px;
       z-index: 1000;
     }
-
-    .sidebar.hidden {
-      transform: translateX(-220px);
+    .sidebar.active {
+      transform: translateX(0);
     }
-
-    .sidebar a {
-      display: block;
-      color: white;
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar ul li a {
+      display: flex;
+      align-items: center;
       padding: 12px;
+      color: white;
       text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
     }
-
-    .sidebar a:hover {
+    .sidebar ul li a i {
+      margin-right: 8px;
+    }
+    .sidebar ul li a:hover {
       background-color: #34495e;
     }
 
     /* Header */
     .header {
-      height: 60px;
       background-color: #3498db;
       color: white;
+      padding: 10px 15px;
       display: flex;
       align-items: center;
-      padding: 0 20px;
-      box-sizing: border-box;
-      position: sticky;
+      justify-content: space-between;
+      position: fixed;
       top: 0;
-      z-index: 900;
+      left: 0;
+      right: 0;
+      height: 50px;
+      z-index: 1200;
     }
-
-    .menu-btn {
-      font-size: 20px;
+    .header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .menu-toggle {
+      font-size: 22px;
       cursor: pointer;
-      margin-right: 20px;
+    }
+    .user-info {
+      font-size: 14px;
+      font-weight: bold;
     }
 
-    /* Nội dung chính */
-    .content {
-      margin-left: 220px;
-      transition: margin-left 0.3s ease;
-      padding: 20px;
+    /* Main content */
+    .main-content {
+      margin-top: 60px;
+      padding: 15px;
     }
 
-    .sidebar.hidden ~ .content {
-      margin-left: 0;
-    }
-
-    /* Các nút chính dạng icon (style giống app mobile) */
-    .buttons {
-      margin-top: 20px;
+    /* Grid buttons */
+    .icon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
     }
 
     .icon-btn {
@@ -99,102 +98,33 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 20px 10px;
+      border-radius: 20px;
       color: white;
-      padding: 25px 10px;
-      border-radius: 24px; /* bo tròn nhiều hơn */
-      cursor: pointer;
-      transition: 0.3s;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
-      height: 120px; /* cố định chiều cao để cân đối */
-    }
-
-    .icon-btn i {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .icon-btn span {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
     }
-
+    .icon-btn i {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
     .icon-btn:hover {
+      transform: scale(1.05);
       opacity: 0.9;
-      transform: translateY(-5px);
     }
 
-    /* Màu riêng cho từng nút */
-    .credit { background: #27ae60; }        /* Xanh lá */
-    .bhyt { background: #e67e22; }          /* Cam */
-    .pay { background: #e74c3c; }           /* Đỏ */
-    .branch { background: #3498db; }        /* Xanh dương */
-    .dead { background: #9b59b6; }          /* Tím */
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .sidebar {
-        transform: translateX(-220px);
-      }
-      .sidebar.show {
-        transform: translateX(0);
-      }
-      .content {
-        margin-left: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <a href="#">Trang Chủ</a>
-    <a href="#">Đăng Nhập</a>
-    <a href="#">Cài Đặt</a>
-  </div>
-
-  <!-- Header -->
-  <div class="header">
-    <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-    <h2>Tool Hỗ Trợ</h2>
-  </div>
-
-  <!-- Nội dung -->
-  <div class="content">
-    <div class="buttons">
-      <a href="#" class="icon-btn credit">
-        <i class="fa-solid fa-credit-card"></i>
-        <span>Thẻ Tín Dụng</span>
-      </a>
-      <a href="#" class="icon-btn bhyt">
-        <i class="fa-solid fa-id-card"></i>
-        <span>Tra Cứu BHYT</span>
-      </a>
-      <a href="#" class="icon-btn pay">
-        <i class="fa-solid fa-file-invoice-dollar"></i>
-        <span>Thanh Toán</span>
-      </a>
-      <a href="#" class="icon-btn branch">
-        <i class="fa-solid fa-building-columns"></i>
-        <span>Địa Chỉ GD</span>
-      </a>
-      <a href="#" class="icon-btn dead">
-        <i class="fa-solid fa-user-slash"></i>
-        <span>KH Qua Đời</span>
-      </a>
-    </div>
-  </div>
-
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      if (window.innerWidth <= 768) {
-        sidebar.classList.toggle("show");
-      } else {
-        sidebar.classList.toggle("hidden");
-      }
-    }
-  </script>
-</body>
-</html>
+    /* Màu sắc từng nút */
+    .login { background: #e74c3c; }
+    .upload { background: #9b59b6; }
+    .request { background: #16a085; }
+    .mail { background: #e67e22; }
+    .confirm { background: #2980b9; }
+    .credit { background: #8e44ad; }
+    .payment { background: #27ae60; }
+    .bank { background: #2ecc71; }
+    .vikki { background: #f39c12; }
+    .help { background: #d35400; }
+    .reset { background: #c0392b; }
