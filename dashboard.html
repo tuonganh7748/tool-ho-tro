@@ -57,12 +57,7 @@
     .sidebar.active {
       transform: translateX(0);
     }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar ul li a {
+    .sidebar a {
       display: flex;
       align-items: center;
       padding: 12px;
@@ -71,11 +66,18 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
       font-size: 14px;
     }
-    .sidebar ul li a i {
+    .sidebar a i {
       margin-right: 10px;
     }
-    .sidebar ul li a:hover {
+    .sidebar a:hover {
       background-color: #34495e;
+    }
+    .sidebar .closebtn {
+      font-size: 24px;
+      text-align: right;
+      padding-right: 15px;
+      cursor: pointer;
+      border-bottom: none;
     }
 
     /* Main content */
@@ -145,17 +147,15 @@
 <body>
 
   <!-- Sidebar -->
-  <!-- Sidebar -->
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#"><i class="fa-solid fa-gear"></i> Cài đặt</a>
-  <a href="#"><i class="fa-solid fa-credit-card"></i> Kích hoạt thẻ tín dụng</a>
-  <a href="#"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập Icard</a>
-  <a href="#"><i class="fa-solid fa-sliders"></i> Điều chỉnh thanh toán</a>
-  <a href="#"><i class="fa-solid fa-user-slash"></i> Khai báo khách qua đời</a>
-  <a href="#"><i class="fa-brands fa-facebook"></i> Truy tìm Facebook</a>
-</div>
-
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+    <a href="#"><i class="fa-solid fa-credit-card"></i> Kích hoạt thẻ tín dụng</a>
+    <a href="#"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập Icard</a>
+    <a href="#"><i class="fa-solid fa-sliders"></i> Điều chỉnh thanh toán</a>
+    <a href="#"><i class="fa-solid fa-user-slash"></i> Khai báo khách qua đời</a>
+    <a href="#"><i class="fa-brands fa-facebook"></i> Truy tìm Facebook</a>
+  </div>
 
   <!-- Header -->
   <div class="header">
@@ -184,7 +184,11 @@
 
   <script>
     function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("active");
+      document.getElementById("mySidebar").classList.toggle("active");
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").classList.remove("active");
     }
   </script>
 
